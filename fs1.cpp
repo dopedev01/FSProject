@@ -41,7 +41,7 @@ public:
 
 }S;
 
-main()
+int main()
 {
     int ch,c,Vehical_Type;
     string Vno;
