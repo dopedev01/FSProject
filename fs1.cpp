@@ -15,6 +15,8 @@ class VehicalDetails
     void update(string);
     int search1(string);
     int research1(string);
+    void time();
+    void Depdisplay();
 }V;
 class UserDetails
 {
@@ -53,11 +55,11 @@ int main()
     cout<<"enter 1 to login\n";
     cout<<"enter 2 to register\n";
     cin>>choice;
-       switch(choice)
+ /*1*/        switch(choice)
         {
-         case 1:cout << "enter name: " << endl;
+         case 1:cout << "enter name: ";
         cin >> uname;
-        cout << "enter password: " << endl;
+        cout << "enter password: ";
         cin >> pword;
                 if(U.search1(uname,pword))
                     //cout<<"Login Succesfull \n";
@@ -67,9 +69,10 @@ int main()
                     cout<<"\n1:CHECK-IN\n";
                     cout<<"\n2:CHECK-OUT\n";
                     cout<<"\n3:View Payment details\n";
+                    cout<<"\n4:Departure timing\n";
                     cin>>ch;
 
-            switch(ch)
+          /*2*/    switch(ch)
         {
             case 1:  cout<<"\n1:ENTER VEHICAL DETAILS\n";
                     cout<<"\n2:GET ALL VECHICAL DETAILS\n";
@@ -77,7 +80,7 @@ int main()
                     cout<<"\n4:MODIFY VEHICAL DETAILS\n";
                     cout<<"\n5:DELETE VEHICAL DETAILS\n";
                     cin>>c;
-                    switch(c)
+                  /*3*/  switch(c)
                     {
 
                         case 1: V.read();
@@ -102,7 +105,7 @@ int main()
 
 
 
-                    }break;
+   /*3*/                   }break;
                 case 2:  cout<<"\n1:ENTER VEHICAL NUMBER\n";
                          cin>>Vno;
                          V.read();
@@ -111,13 +114,18 @@ int main()
                          V.pack();
                          V.repack();
                          V.del(Vno);
+                         V.time();
                            break;
                 case 3:
                     cout<<"\nBIKE-AMOUNT FOR BIKE PARKING IS:50";
                     cout<<"\nCAR-AMOUNT FOR CAR PARKING IS:70";
                     cout<<"\nCRUZER-AMOUNT FOR CRUZER PARKING IS:120";
                     cout<<"\nTRUCK-AMOUNT FOR TRUCK PARKING IS:170";
-                    cin>>Vehical_Type;
+                    V.Depdisplay();
+                    break;
+                    case 4:V.time();
+                    break;
+                   
 
         }//switch
         }
@@ -129,9 +137,10 @@ int main()
                 break;
         case 3:while(1)
                 {
-                    string i,yes;
+                    string i;
                     cout<<"Enter Yes to continue\n";
-                    if(i==yes)
+                    cin>>i;
+                    if(i=="yes")
                     {
                         S.read();
                         S.pack();
@@ -140,7 +149,7 @@ int main()
 
                 }
 
-        }
+    /*1*/     }
 
 }
 }
@@ -320,6 +329,40 @@ void VehicalDetails::repack()
                             fp.close();
 
 }
+void VehicalDetails::time(){
+string t;
+cout<<endl<<"Enter Departure time:";
+cin>>t;
+cout<<t<<endl;
+}
+
+void VehicalDetails::Depdisplay(){
+ fstream fp;
+    int recno=0,flag=0,pos=0;
+    fp.open("Checkout.txt",ios::in);
+    buffer.erase();
+    while(!fp.eof())
+    {
+        buffer.erase();
+        getline(fp,buffer);
+      //  recno++;
+       // unpack();
+       // if(VNO==VNO)
+       // {
+            cout<<"\nRecord is "<<buffer;
+            if(typeofveh == "bike"){
+            cout<<"50 rs";
+            }
+             
+            //pos=fp.tellg();
+            //flag=1;
+           // return pos;
+       // }
+    }
+
+
+}
+
 
 
 void UserDetails::write_file()
@@ -399,7 +442,7 @@ void Settings::unpack()
     S.VNO=V.VNO;
     S.Vowner_name=U.cust_username;
     S.typeofveh=V.typeofveh;
-    cout<<"Vehical number is:\n"<<S.VNO;
+    cout<<"Vehical number is:\n"<<S.VNO;             
     cout<<"Customer name is:\n"<<S.Vowner_name;
     cout<<"Vehical number is\n:"<<S.typeofveh;
 

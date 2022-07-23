@@ -1,3 +1,5 @@
-*|RoyalEnfiled|2021|private|2wheeler$
-*|dominer|2022|private|bike$
 *|RoyalEnfiled|2021|private|bike$
+*|dominer|2022|private|bike$
+3|ninja|2021|private|bike$
+*|apache|2121|private|bike$
+*|benz|2021|pvt|car$
