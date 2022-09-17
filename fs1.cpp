@@ -108,7 +108,6 @@ int main()
    /*3*/                   }break;
                 case 2:  cout<<"\n1:ENTER VEHICAL NUMBER\n";
                          cin>>Vno;
-                         V.read();
                          V.search1(Vno);
                          V.unpack();
                          V.pack();
@@ -336,31 +335,27 @@ cin>>t;
 cout<<t<<endl;
 }
 
+
 void VehicalDetails::Depdisplay(){
- fstream fp;
-    int recno=0,flag=0,pos=0;
-    fp.open("Checkout.txt",ios::in);
-    buffer.erase();
-    while(!fp.eof())
-    {
-        buffer.erase();
+fstream fp;
+fp.open("Checkout.txt",ios::in);
+     
         getline(fp,buffer);
-      //  recno++;
-       // unpack();
-       // if(VNO==VNO)
-       // {
-            cout<<"\nRecord is "<<buffer;
-            if(typeofveh == "bike"){
-            cout<<"50 rs";
+      
+            
+            if(typeofveh =="bike"){
+            cout<<"Amount:50 rs";  
             }
-             
-            //pos=fp.tellg();
-            //flag=1;
-           // return pos;
-       // }
-    }
-
-
+            else if(typeofveh =="car"){
+            cout<<"Amount:70 rs"; 
+            } 
+            else if(typeofveh =="cruzer"){
+            cout<<"Amount:100 rs";  
+            }
+            else{
+            cout<<"Amount:170 rs"; 
+            }
+     
 }
 
 
